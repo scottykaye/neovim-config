@@ -13,7 +13,9 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use('NvChad/nvim-colorizer.lua')
+
+  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 	use('nvim-treesitter/playground')
 	use('theprimeagen/harpoon')
 	use('mbbill/undotree')
@@ -49,5 +51,17 @@ return require('packer').startup(function(use)
 		{'L3MON4D3/LuaSnip'},     -- Required
 	}
 }
+
+use {
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons', -- optional
+  },
+  config = function()
+    require("nvim-tree").setup {}
+  end
+}
+
+
 
 end)
