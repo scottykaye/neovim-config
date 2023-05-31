@@ -1,6 +1,5 @@
-vim.opt.guicursor = ""
+ vim.opt.guicursor = ""
 vim.opt.number = true
-
 -- vim.opt.nu = true
 -- vim.opt.relativenumber = true
 
@@ -30,6 +29,8 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 -- vim.opt.colorcolumn = "80"
+
+
 vim.cmd([[autocmd VimEnter * lua ColorMyPencils()]])
 
 vim.api.nvim_command([[
