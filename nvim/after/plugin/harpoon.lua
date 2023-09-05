@@ -8,5 +8,6 @@ vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
 -- vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
 -- vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
 -- vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
+
 vim.keymap.set("n", "<C-S-P>", function() ui.nav_prev() end)
 vim.keymap.set("n", "<C-S-N>", function() ui.nav_next() end)
