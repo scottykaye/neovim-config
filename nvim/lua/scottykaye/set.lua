@@ -1,4 +1,4 @@
- vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
 vim.opt.number = true
 -- vim.opt.nu = true
 -- vim.opt.relativenumber = true
@@ -17,7 +17,6 @@ vim.opt.backup = false
 -- vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
@@ -36,4 +35,3 @@ vim.cmd([[autocmd VimEnter * lua ColorMyPencils()]])
 vim.api.nvim_command([[
   autocmd BufWritePre *.lua :lua require("my_module").strip_trailing_whitespace()
 ]])
-
