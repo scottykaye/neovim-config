@@ -91,6 +91,11 @@ return require('packer').startup(function(use)
       { 'hrsh7th/nvim-cmp' },     -- Required
       { 'hrsh7th/cmp-nvim-lsp' }, -- Required
       { 'L3MON4D3/LuaSnip' },     -- Required
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'hrsh7th/cmp-nvim-lua' },
+      { 'rafamadriz/friendly-snippets' },
     }
   }
 
@@ -100,6 +105,11 @@ return require('packer').startup(function(use)
   --
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
+
+  use("folke/zen-mode.nvim")
+  use("github/copilot.vim")
+  use("eandrju/cellular-automaton.nvim")
+  use("laytan/cloak.nvim")
 
   --use {
   --  'nvim-tree/nvim-tree.lua',
