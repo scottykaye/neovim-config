@@ -25,6 +25,12 @@ return require('packer').startup(function(use)
   --    end
   --  })
 
+  use {
+      "nvim-telescope/telescope-file-browser.nvim",
+      requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  }
+
+
   use({
     'rose-pine/neovim',
     as = 'rose-pine',
