@@ -37,6 +37,11 @@ vim.opt.clipboard="unnamedplus"
 
 vim.cmd([[autocmd VimEnter * lua ColorMyPencils()]])
 
-vim.api.nvim_command([[
-  autocmd BufWritePre *.lua :lua require("my_module").strip_trailing_whitespace()
-]])
+-- vim.api.nvim_command([[
+--  autocmd BufWritePre *.lua :lua require("my_module").strip_trailing_whitespace()
+-- ]])
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})

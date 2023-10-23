@@ -1,9 +1,6 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
-
-
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
@@ -18,65 +15,23 @@ return require('packer').startup(function(use)
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
-  --  use({
-  --    'folke/tokyonight.nvim',
-  --    config = function()
-  --      vim.cmd('colorscheme tokyonight')
-  --    end
-  --  })
+
+  --  Haven't been using this. This produces a new vim tree that stays with you
+  --use {
+  --  'nvim-tree/nvim-tree.lua',
+  --  requires = {
+  --    'nvim-tree/nvim-web-devicons', -- optional
+  --  },
+  --  config = function()
+  --    require("nvim-tree").setup {}
+  --  end
+  --}
 
   use {
       "nvim-telescope/telescope-file-browser.nvim",
       requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   }
-
-
-  use({
-    'rose-pine/neovim',
-    as = 'rose-pine',
-    config = function()
-      require("rose-pine").setup({
-        dark_variant = 'moon',
-        groups = {
-          panel       = "none",
-          comment     = 'muted',
-          link        = 'iris',
-          punctuation = 'subtle',
-          error       = 'love',
-          hint        = 'iris',
-          info        = 'foam',
-          warn        = 'gold',
-        },
-        highlight_groups = {
-          Visual                  = { fg = "base", bg = "iris" },
-          Cursor                  = { fg = "base", bg = "pine" },
-          CursorColumn            = { fg = "base", bg = "gold" },
-          ColorColumn             = { fg = "base", bg = "gold" },
-          CursorLine              = { bg = "muted", blend = 20 },
-          LineNr                  = { fg = "iris", bg = "none" },
-          CursorLineNr            = { fg = "base", bg = "love" },
-          IncSearch               = { fg = "base", bg = "love" },
-          Normal                  = { bg = "none" },
-          NormalFloat             = { bg = "none" },
-          NormalNC                = { bg = "none" },
-          FloatBorder             = { bg = "none" },
-          StatusLine              = { fg = "love", bg = "muted", blend = 20 },
-          StatusLineNC            = { fg = "rose", bg = "muted", blend = 20 },
-          TelescopeBorder         = { fg = "highlight_high", bg = "none" },
-          TelescopeNormal         = { bg = "none" },
-          TelescopePromptNormal   = { bg = "none" },
-          TelescopeResultsNormal  = { fg = "gold", bg = "none" },
-          TelescopeSelection      = { fg = "love", bg = "muted", blend = 20 },
-          TelescopeSelectionCaret = { fg = "rose", bg = "muted", blend = 20 },
-
-        },
-      })
-
-
-
-      vim.cmd([[colorscheme rose-pine]])
-    end
-  })
+  use 'nvim-tree/nvim-web-devicons'
 
   use {
     'VonHeikemen/lsp-zero.nvim',
@@ -104,26 +59,199 @@ return require('packer').startup(function(use)
       { 'rafamadriz/friendly-snippets' },
     }
   }
-
-  --
-  -- f
-  --   --
-  --
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
-
   use("folke/zen-mode.nvim")
   use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
 
-  --use {
-  --  'nvim-tree/nvim-tree.lua',
-  --  requires = {
-  --    'nvim-tree/nvim-web-devicons', -- optional
-  --  },
-  --  config = function()
-  --    require("nvim-tree").setup {}
-  --  end
-  --}
+-- use { "ellisonleao/gruvbox.nvim" }
+--   require("gruvbox").setup({
+--   terminal_colors = true, -- add neovim terminal colors
+--   undercurl = true,
+--   underline = true,
+--   bold = true,
+--   italic = {
+--     strings = true,
+--     emphasis = true,
+--     comments = true,
+--     operators = false,
+--     folds = true,
+--   },
+--   strikethrough = true,
+--   invert_selection = false,
+--   invert_signs = false,
+--   invert_tabline = false,
+--   invert_intend_guides = false,
+--   inverse = true, -- invert background for search, diffs, statuslines and errors
+--   contrast = "", -- can be "hard", "soft" or empty string
+--   palette_overrides = {},
+--   overrides = {},
+--   dim_inactive = false,
+--   transparent_mode = false,
+--     palette_overrides = {
+--         bright_green = "#66ff00",
+--     }
+-- })
+-- vim.cmd("colorscheme gruvbox")
+
+
+
+use({
+  'Mofiqul/dracula.nvim',
+  as ="dracula",
+  config = function()
+
+  require("dracula").setup({
+    -- customize dracula color palette
+    colors = {
+      bg = "none",
+      fg = "#F8F8F2",
+      selection = "#44475A",
+      comment = "#6272A4",
+      red = "#FF5555",
+      orange = "#FFB86C",
+      yellow = "#F1FA8C",
+      green = "#50fa7b",
+      purple = "#BD93F9",
+      cyan = "#8BE9FD",
+      pink = "#FF79C6",
+      bright_red = "#FF6E6E",
+      bright_green = "#69FF94",
+      bright_yellow = "#FFFFA5",
+      bright_blue = "#D6ACFF",
+      bright_magenta = "#FF92DF",
+      bright_cyan = "#A4FFFF",
+      bright_white = "#FFFFFF",
+      menu = "#21222C",
+      visual = "#3E4452",
+      gutter_fg = "#4B5263",
+      nontext = "#3B4048",
+      white = "#ABB2BF",
+      black = "#191A21",
+    },
+    -- show the '~' characters after the end of buffers
+    show_end_of_buffer = true, -- default false
+    -- use transparent background
+    transparent_bg = true, -- default false
+    -- set custom lualine background color
+    lualine_bg_color = "#44475a", -- default nil
+    -- set italic comment
+    italic_comment = true, -- default false
+    -- overrides the default highlights with table see `:h synIDattr`
+    -- You can use overrides as table like this
+    -- overrides = {
+    --   NonText = { fg = "white" }, -- set NonText fg to white
+    --   NvimTreeIndentMarker = { link = "NonText" }, -- link to NonText highlight
+    --   Nothing = {} -- clear highlight of Nothing
+    -- },
+    -- Or you can also use it like a function to get color from theme
+    overrides = function (colors)
+      return {
+        NonText = { fg = colors.white }, -- set NonText fg to white of theme
+        DiffAdd = { bg = colors.bright_green },
+        DiffDelete = { fg = colors.bright_red },
+        DiffChange = { bg = colors.comment },
+        DiffText = { bg = colors.comment},
+
+        Cursor = { reverse = true, },
+        CursorLineNr = { fg = colors.black, bg = colors.bright_yellow,  bold = true, },
+        SignColumn = { bg = colors.bg, },
+        Conceal = { fg = colors.comment, },
+        CursorColumn = { fg = colors.black,  bg = colors.bright_yellow, },
+        CursorLine = { bg = colors.selection, },
+        ColorColumn = { bg = colors.bright_yellow },
+        Directory = { fg = colors.bright_yellow, },
+        ErrorMsg = { fg = colors.bright_red, },
+        VertSplit = { fg = colors.white, },
+        Folded = { fg = colors.comment, },
+        FoldColumn = {},
+        Search = { fg = colors.black, bg = colors.bright_magenta, },
+        IncSearch = { fg = colors.bright_green, bg = colors.comment, },
+        LineNr = { fg = colors.white, },
+        MatchParen = { fg = colors.fg, underline = true, },
+        Pmenu = { fg = colors.white, bg = colors.menu, },
+        PmenuSel = { fg = colors.white, bg = colors.selection, },
+        PmenuSbar = { bg = colors.bg, },
+        PmenuThumb = { bg = colors.selection, },
+
+        illuminatedWord = { bg = colors.comment },
+        illuminatedCurWord = { bg = colors.comment },
+        IlluminatedWordText = { bg = colors.comment },
+        IlluminatedWordRead = { bg = colors.comment },
+        IlluminatedWordWrite = { bg = colors.comment },
+
+        StatusLine = { fg = colors.black, bg = colors.bright_yellow, bold = true},
+        StatusLineNC = { fg = colors.comment, },
+        StatusLineTerm = { fg = colors.white, bg = colors.black, },
+        StatusLineTermNC = { fg = colors.comment, },
+
+        TelescopePromptBorder = { fg = colors.bright_green, },
+        TelescopeResultsBorder = { fg = colors.bright_green, },
+        TelescopePreviewBorder = { fg = colors.bright_green },
+        TelescopeSelection = { fg = colors.bright_green,  bg = colors.selection, },
+        TelescopeMultiSelection = { fg = colors.purple, bg = colors.selection, },
+        TelescopeNormal = { fg = colors.white, bg = colors.bg },
+        TelescopeMatching = { fg = colors.bright_green, },
+        TelescopePromptPrefix = { fg = colors.purple, },
+        TelescopeResultsDiffDelete = { fg = colors.red },
+        TelescopeResultsDiffChange = { fg = colors.cyan },
+        TelescopeResultsDiffAdd = { fg = colors.green },
+
+
+      }
+    end
+  })
+  vim.cmd([[colorscheme dracula]])
+
+  end
+})
+--  use({
+--    'rose-pine/neovim',
+--    as = 'rose-pine',
+--    config = function()
+--      require("rose-pine").setup({
+--        dark_variant = 'moon',
+--        groups = {
+--          panel       = "none",
+--          comment     = 'muted',
+--          link        = 'iris',
+--          punctuation = 'subtle',
+--          error       = 'love',
+--          hint        = 'iris',
+--          info        = 'foam',
+--          warn        = 'gold',
+--        },
+--        highlight_groups = {
+--          Visual                  = { fg = "base", bg = "iris" },
+--          Cursor                  = { fg = "base", bg = "pine" },
+--          CursorColumn            = { fg = "base", bg = "gold" },
+--          ColorColumn             = { fg = "base", bg = "gold" },
+--          CursorLine              = { bg = "muted", blend = 20 },
+--          LineNr                  = { fg = "iris", bg = "none" },
+--          CursorLineNr            = { fg = "base", bg = "love" },
+--          IncSearch               = { fg = "base", bg = "love" },
+--          Normal                  = { bg = "none" },
+--          NormalFloat             = { bg = "none" },
+--          NormalNC                = { bg = "none" },
+--          FloatBorder             = { bg = "none" },
+--          StatusLine              = { fg = "love", bg = "muted", blend = 20 },
+--          StatusLineNC            = { fg = "rose", bg = "muted", blend = 20 },
+--          TelescopeBorder         = { fg = "highlight_high", bg = "none" },
+--          TelescopeNormal         = { bg = "none" },
+--          TelescopePromptNormal   = { bg = "none" },
+--          TelescopeResultsNormal  = { fg = "gold", bg = "none" },
+--          TelescopeSelection      = { fg = "love", bg = "muted", blend = 20 },
+--          TelescopeSelectionCaret = { fg = "rose", bg = "muted", blend = 20 },
+--
+--        },
+--      })
+--
+--
+--
+--      vim.cmd([[colorscheme rose-pine]])
+--    end
+--  })
+
 end)
