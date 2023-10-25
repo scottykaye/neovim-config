@@ -59,7 +59,8 @@ return require('packer').startup(function(use)
       { 'rafamadriz/friendly-snippets' },
     }
   }
-  use('jose-elias-alvarez/null-ls.nvim')
+--  use('jose-elias-alvarez/null-ls.nvim')
+  use( 'mhartington/formatter.nvim')
   use('MunifTanjim/prettier.nvim')
   use("folke/zen-mode.nvim")
   use("github/copilot.vim")
@@ -168,7 +169,8 @@ use({
         CursorColumn = { fg = colors.black,  bg = colors.bright_yellow, },
         CursorLine = { bg = colors.selection, },
         ColorColumn = { bg = colors.bright_yellow },
-        Directory = { fg = colors.bright_magenta, },
+        Directory = { fg = colors.purple, },
+                  
         ErrorMsg = { fg = colors.bright_red, },
         VertSplit = { fg = colors.white, },
         Folded = { fg = colors.comment, },
