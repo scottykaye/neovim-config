@@ -171,6 +171,7 @@ use({
         CursorLine = { bg = colors.selection, },
         ColorColumn = { bg = colors.bright_yellow },
         Directory = { fg = colors.purple, },
+                  
         ErrorMsg = { fg = colors.bright_red, },
         VertSplit = { fg = colors.white, },
         Folded = { fg = colors.comment, },
