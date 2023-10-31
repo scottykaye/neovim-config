@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
+  use('tpope/vim-surround')
 
   --  Haven't been using this. This produces a new vim tree that stays with you
   --use {
@@ -171,7 +172,7 @@ use({
         CursorLine = { bg = colors.selection, },
         ColorColumn = { bg = colors.bright_yellow },
         Directory = { fg = colors.purple, },
-                  
+
         ErrorMsg = { fg = colors.bright_red, },
         VertSplit = { fg = colors.white, },
         Folded = { fg = colors.comment, },
