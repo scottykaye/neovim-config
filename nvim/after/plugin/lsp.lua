@@ -87,13 +87,13 @@ require('mason-lspconfig').setup({
 })
 
 
-lsp.format_on_save({
-  format_opts = {
-    async = false,
-    timeout_ms = 10000,
-  },
-  servers = {
-    ['rust_analyzer'] = {'rust'},
-    ['tsserver'] = {'javascript', 'typescript'},
-  }
-})
+-- lsp.format_on_save({
+--   format_opts = {
+--     async = false,
+--     timeout_ms = 10000,
+--   },
+--   servers = {
+--     ['rust_analyzer'] = {'rust'},
+--     ['tsserver'] = {'javascript', 'typescript'},
+--   }
+-- })
