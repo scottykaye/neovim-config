@@ -75,7 +75,6 @@ return require('packer').startup(function(use)
     end,
   })
 
-
   -- use { "ellisonleao/gruvbox.nvim" }
   --   require("gruvbox").setup({
   --   terminal_colors = true, -- add neovim terminal colors
