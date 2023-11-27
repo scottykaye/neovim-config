@@ -93,7 +93,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 require('lspconfig').emmet_ls.setup({
     -- on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "typescript", "vue" },
     init_options = {
       html = {
         options = {
