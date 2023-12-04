@@ -76,14 +76,24 @@ return require('packer').startup(function(use)
   })
 
   use("dnlhc/glance.nvim")
-  --  use({
-  --    'nvimdev/lspsaga.nvim',
-  --    after = 'nvim-lspconfig',
-  --    config = function()
-  --      require('lspsaga').setup({})
-  --    end,
-  --  })
-  --
+
+  use({
+    "L3MON4D3/LuaSnip",
+    -- follow latest release.
+    tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    -- install jsregexp (optional!:).
+    run = "make install_jsregexp"
+  })
+
+  use({
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup()
+    end,
+  })
+
 
   -- use { "ellisonleao/gruvbox.nvim" }
   --   require("gruvbox").setup({
