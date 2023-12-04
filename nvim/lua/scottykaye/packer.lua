@@ -67,17 +67,6 @@ return require('packer').startup(function(use)
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
   use("f-person/git-blame.nvim")
-  use("dnlhc/glance.nvim")
-
-  use({
-    "folke/which-key.nvim",
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      require("which-key").setup({})
-    end,
-  })
-
 
   use({
     "stevearc/conform.nvim",
@@ -86,6 +75,15 @@ return require('packer').startup(function(use)
     end,
   })
 
+  use("dnlhc/glance.nvim")
+  --  use({
+  --    'nvimdev/lspsaga.nvim',
+  --    after = 'nvim-lspconfig',
+  --    config = function()
+  --      require('lspsaga').setup({})
+  --    end,
+  --  })
+  --
 
   -- use { "ellisonleao/gruvbox.nvim" }
   --   require("gruvbox").setup({

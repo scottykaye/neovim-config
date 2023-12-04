@@ -5,8 +5,6 @@ require("conform").setup({
     python = { "isort", "black" },
     go = { "goimports", "gofumpt", "goimports-reviser" },
 
-
-
     -- Use a sub-list to run only the first available formatter
     javascript = { { "prettierd", "prettier" } },
     css = { { "prettierd", "prettier" } },
