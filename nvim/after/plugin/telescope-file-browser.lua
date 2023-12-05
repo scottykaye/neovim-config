@@ -3,11 +3,11 @@
 local actions = require "telescope.actions"
 
 require("telescope").setup {
-    pickers = {
-      find_files = {
-        find_command = {'rg', '--files', '--hidden', '-g', '!.git'},
-      },
+  pickers = {
+    find_files = {
+      find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
     },
+  },
 
 
   defaults = {
@@ -25,9 +25,9 @@ require("telescope").setup {
   },
 
   extensions = {
-     fzy_native = {
-       override_generic_sorter = false,
-       override_file_sorter = true,
+    fzy_native = {
+      override_generic_sorter = false,
+      override_file_sorter = true,
     },
     file_browser = {
       -- ivy is at the bottom file browser kinda cool but not right now!
