@@ -33,8 +33,8 @@ require("telescope").setup {
       -- ivy is at the bottom file browser kinda cool but not right now!
       -- theme = "ivy",
       -- theme = "dropdown",
-      -- disables netrw and use telescope-file-browser in its place
       hidden = { file_browser = true, folder_browser = true },
+      -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
       mappings = {
         ["i"] = {
