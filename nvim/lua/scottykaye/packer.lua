@@ -1,14 +1,14 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
--- Only required if you have packer configured as `opt`
+-- This file can be loaded by calling `lua require('plugins')` from your init.vim Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+  use('wbthomason/packer.nvim')
+  use({
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.1',
     -- or                            , branch = '0.1.x',
     requires = { { 'nvim-lua/plenary.nvim' } }
-  }
+  })
   use('NvChad/nvim-colorizer.lua')
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use('nvim-treesitter/playground')
@@ -16,25 +16,14 @@ return require('packer').startup(function(use)
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
   use('tpope/vim-surround')
-
-  --  Haven't been using this. This produces a new vim tree that stays with you
-  --use {
-  --  'nvim-tree/nvim-tree.lua',
-  --  requires = {
-  --    'nvim-tree/nvim-web-devicons', -- optional
-  --  },
-  --  config = function()
-  --    require("nvim-tree").setup {}
-  --  end
-  --}
-
-  use {
+  use("lukas-reineke/indent-blankline.nvim")
+  use('stevearc/dressing.nvim')
+  use({
     "nvim-telescope/telescope-file-browser.nvim",
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-  }
-  use 'nvim-tree/nvim-web-devicons'
-
-  use {
+  })
+  use('nvim-tree/nvim-web-devicons')
+  use({
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
     requires = {
@@ -59,24 +48,22 @@ return require('packer').startup(function(use)
       { 'hrsh7th/cmp-nvim-lua' },
       { 'rafamadriz/friendly-snippets' },
     }
-  }
-  --  use('jose-elias-alvarez/null-ls.nvim')
+  })
   use('MunifTanjim/prettier.nvim')
   use("folke/zen-mode.nvim")
   use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
   use("f-person/git-blame.nvim")
-
+  use("dnlhc/glance.nvim")
+  use('iamcco/markdown-preview.nvim')
+  use('rcarriga/nvim-notify')
   use({
     "stevearc/conform.nvim",
     config = function()
       require("conform").setup()
     end,
   })
-
-  use("dnlhc/glance.nvim")
-
   use({
     "L3MON4D3/LuaSnip",
     -- follow latest release.
@@ -84,49 +71,84 @@ return require('packer').startup(function(use)
     -- install jsregexp (optional!:).
     run = "make install_jsregexp"
   })
-
   use({
     "folke/which-key.nvim",
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
       require("which-key").setup()
-    end,
+    end
   })
 
+  use({
+    "goolord/alpha-nvim",
+    requires = { "kyazdani42/nvim-web-devicons" },
+    event = 'VimEnter',
+    config = function()
+      local alpha = require("alpha")
+      local dashboard = require("alpha.themes.dashboard")
 
-  -- use { "ellisonleao/gruvbox.nvim" }
-  --   require("gruvbox").setup({
-  --   terminal_colors = true, -- add neovim terminal colors
-  --   undercurl = true,
-  --   underline = true,
-  --   bold = true,
-  --   italic = {
-  --     strings = true,
-  --     emphasis = true,
-  --     comments = true,
-  --     operators = false,
-  --     folds = true,
-  --   },
-  --   strikethrough = true,
-  --   invert_selection = false,
-  --   invert_signs = false,
-  --   invert_tabline = false,
-  --   invert_intend_guides = false,
-  --   inverse = true, -- invert background for search, diffs, statuslines and errors
-  --   contrast = "", -- can be "hard", "soft" or empty string
-  --   palette_overrides = {},
-  --   overrides = {},
-  --   dim_inactive = false,
-  --   transparent_mode = false,
-  --     palette_overrides = {
-  --         bright_green = "#66ff00",
-  --     }
-  -- })
-  -- vim.cmd("colorscheme gruvbox")
+      math.randomseed(os.time())
 
+      local function pick_color()
+        local colors = { "String", "Identifier", "Keyword", "Number" }
+        return colors[math.random(#colors)]
+      end
 
+      local function footer()
+        local total_plugins = #vim.tbl_keys(packer_plugins)
+        local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
+        local version = vim.version()
+        local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
 
+        return datetime .. "   " .. total_plugins .. " plugins" .. nvim_version_info
+      end
+
+      local logo = {
+
+        "                                                     ",
+        "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+        "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+        "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+        "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+        "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+        "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+        "                                                     ", }
+
+      dashboard.section.header.val = logo
+      dashboard.section.header.opts.hl = pick_color()
+
+      dashboard.section.buttons.val = {
+        dashboard.button("<leader>fb", "  File Browser"),
+        dashboard.button("<leader>pf", "  Find File"),
+        dashboard.button("<C-e>", "  Recent Project Files"),
+        dashboard.button("<leader>ps", "  Project Search"),
+        dashboard.button("<leader>vpp", "  Update plugins"),
+        dashboard.button("q", "  Quit", ":qa<cr>")
+      }
+
+      dashboard.section.footer.val = footer()
+      dashboard.section.footer.opts.hl = "Constant"
+
+      alpha.setup(dashboard.opts)
+
+      vim.cmd([[ autocmd FileType alpha setlocal nofoldenable ]])
+    end
+  })
+
+  use({
+    "akinsho/toggleterm.nvim",
+    tag = '*',
+    config = function()
+      require("toggleterm").setup({
+        open_mapping = [[<c-t>]],
+      })
+    end
+  })
+  use({
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  })
   use({
     'Mofiqul/dracula.nvim',
     as = "dracula",
@@ -264,6 +286,46 @@ return require('packer').startup(function(use)
       vim.cmd([[colorscheme dracula]])
     end
   })
+  --  Haven't been using this. This produces a new vim tree that stays with you
+  --use {
+  --  'nvim-tree/nvim-tree.lua',
+  --  requires = {
+  --    'nvim-tree/nvim-web-devicons', -- optional
+  --  },
+  --  config = function()
+  --    require("nvim-tree").setup {}
+  --  end
+  --}
+  -- use { "ellisonleao/gruvbox.nvim" }
+  --   require("gruvbox").setup({
+  --   terminal_colors = true, -- add neovim terminal colors
+  --   undercurl = true,
+  --   underline = true,
+  --   bold = true,
+  --   italic = {
+  --     strings = true,
+  --     emphasis = true,
+  --     comments = true,
+  --     operators = false,
+  --     folds = true,
+  --   },
+  --   strikethrough = true,
+  --   invert_selection = false,
+  --   invert_signs = false,
+  --   invert_tabline = false,
+  --   invert_intend_guides = false,
+  --   inverse = true, -- invert background for search, diffs, statuslines and errors
+  --   contrast = "", -- can be "hard", "soft" or empty string
+  --   palette_overrides = {},
+  --   overrides = {},
+  --   dim_inactive = false,
+  --   transparent_mode = false,
+  --     palette_overrides = {
+  --         bright_green = "#66ff00",
+  --     }
+  -- })
+  -- vim.cmd("colorscheme gruvbox")
+
   --  use({
   --    'rose-pine/neovim',
   --    as = 'rose-pine',
