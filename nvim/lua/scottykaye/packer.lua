@@ -58,6 +58,7 @@ return require('packer').startup(function(use)
   use("dnlhc/glance.nvim")
   use('iamcco/markdown-preview.nvim')
   use('rcarriga/nvim-notify')
+  use('onsails/lspkind-nvim')
   use({
     "stevearc/conform.nvim",
     config = function()
@@ -141,7 +142,7 @@ return require('packer').startup(function(use)
     tag = '*',
     config = function()
       require("toggleterm").setup({
-        open_mapping = [[<c-t>]],
+        open_mapping = [[<C-S-T>]],
       })
     end
   })
