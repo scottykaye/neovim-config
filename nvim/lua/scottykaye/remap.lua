@@ -1,7 +1,10 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
-vim.keymap.set("v", "<leader>pl", "pgvy")
+-- remap vim paste to paste copy
+vim.keymap.set("v", "<leader>pc", "p")
+-- make pastes actually paste
+vim.keymap.set("v", "p", "pgvy")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

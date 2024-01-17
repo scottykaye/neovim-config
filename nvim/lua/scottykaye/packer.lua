@@ -164,6 +164,8 @@ return require('packer').startup(function(use)
           red = "#FF5555",
           orange = "#FFB86C",
           yellow = "#F1FA8C",
+
+          orange_yellow = "#ffeb20",
           green = "#50fa7b",
           purple = "#BD93F9",
           cyan = "#8BE9FD",
@@ -213,7 +215,7 @@ return require('packer').startup(function(use)
             DiffText = { bg = colors.comment },
 
             Cursor = { reverse = true, },
-            CursorLineNr = { fg = colors.black, bg = colors.bright_yellow, bold = true, },
+            CursorLineNr = { fg = colors.black, bg = colors.orange_yellow, bold = true, },
             SignColumn = { bg = colors.bg, },
             Conceal = { fg = colors.comment, },
             CursorColumn = { fg = colors.black, bg = colors.bright_yellow, },
@@ -222,7 +224,9 @@ return require('packer').startup(function(use)
             Directory = { fg = colors.purple, },
 
             ErrorMsg = { fg = colors.bright_red, },
-            VertSplit = { fg = colors.white, },
+
+            VertSplit = { fg = colors.pink, },
+            WinSeparator = { fg = colors.pink, },
             Folded = { fg = colors.comment, },
             FoldColumn = {},
             Search = { fg = colors.black, bg = colors.bright_magenta, },
@@ -240,9 +244,9 @@ return require('packer').startup(function(use)
             IlluminatedWordRead = { bg = colors.comment },
             IlluminatedWordWrite = { bg = colors.comment },
 
-            StatusLine = { fg = colors.black, bg = colors.bright_yellow, bold = true },
-            StatusLineNC = { fg = colors.comment, },
-            StatusLineTerm = { fg = colors.white, bg = colors.black, },
+            StatusLine = { fg = colors.black, bg = colors.orange_yellow, bold = true },
+            StatusLineNC = { fg = colors.black, bg = colors.white},
+            StatusLineTerm = { fg = colors.white, bg = colors.pink },
             StatusLineTermNC = { fg = colors.comment, },
 
             TelescopePromptBorder = { fg = colors.bright_green, },
@@ -256,6 +260,7 @@ return require('packer').startup(function(use)
             TelescopeResultsDiffDelete = { fg = colors.red },
             TelescopeResultsDiffChange = { fg = colors.cyan },
             TelescopeResultsDiffAdd = { fg = colors.green },
+
 
             markdownBlockquote = { fg = colors.yellow, italic = true, },
             markdownBold = { fg = colors.orange, bold = true, },
