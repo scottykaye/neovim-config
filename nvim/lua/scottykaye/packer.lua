@@ -12,7 +12,11 @@ return require('packer').startup(function(use)
   use('NvChad/nvim-colorizer.lua')
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   use('nvim-treesitter/playground')
-  use('theprimeagen/harpoon')
+  use({
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { { "nvim-lua/plenary.nvim" } }
+  })
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
   use('tpope/vim-surround')
@@ -164,7 +168,6 @@ return require('packer').startup(function(use)
           red = "#FF5555",
           orange = "#FFB86C",
           yellow = "#F1FA8C",
-
           orange_yellow = "#ffeb20",
           green = "#50fa7b",
           purple = "#BD93F9",
@@ -245,7 +248,7 @@ return require('packer').startup(function(use)
             IlluminatedWordWrite = { bg = colors.comment },
 
             StatusLine = { fg = colors.black, bg = colors.orange_yellow, bold = true },
-            StatusLineNC = { fg = colors.black, bg = colors.white},
+            StatusLineNC = { fg = colors.black, bg = colors.white },
             StatusLineTerm = { fg = colors.white, bg = colors.pink },
             StatusLineTermNC = { fg = colors.comment, },
 
@@ -260,7 +263,6 @@ return require('packer').startup(function(use)
             TelescopeResultsDiffDelete = { fg = colors.red },
             TelescopeResultsDiffChange = { fg = colors.cyan },
             TelescopeResultsDiffAdd = { fg = colors.green },
-
 
             markdownBlockquote = { fg = colors.yellow, italic = true, },
             markdownBold = { fg = colors.orange, bold = true, },
