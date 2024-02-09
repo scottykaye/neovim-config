@@ -5,7 +5,7 @@ return require('packer').startup(function(use)
   use('wbthomason/packer.nvim')
   use({
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
+    tag = '0.1.4',
     -- or                            , branch = '0.1.x',
     requires = { { 'nvim-lua/plenary.nvim' } }
   })
@@ -22,37 +22,41 @@ return require('packer').startup(function(use)
   use('tpope/vim-surround')
   use("lukas-reineke/indent-blankline.nvim")
   use('stevearc/dressing.nvim')
+  use({ 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim', 'neovim/nvim-lspconfig' })
+  use('hrsh7th/nvim-cmp')
+  use('hrsh7th/cmp-nvim-lsp')
   use({
     "nvim-telescope/telescope-file-browser.nvim",
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   })
   use('nvim-tree/nvim-web-devicons')
-  use({
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    requires = {
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' }, -- Required
-      {
-        -- Optional
-        'williamboman/mason.nvim',
-        run = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
-      },
-      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },     -- Required
-      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-      { 'L3MON4D3/LuaSnip' },     -- Required
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'saadparwaiz1/cmp_luasnip' },
-      { 'hrsh7th/cmp-nvim-lua' },
-      { 'rafamadriz/friendly-snippets' },
-    }
-  })
+  use('neovim/nvim-lspconfig')
+  --  use({
+  --    'VonHeikemen/lsp-zero.nvim',
+  --    branch = 'v2.x',
+  --    requires = {
+  --      -- LSP Support
+  --      { 'neovim/nvim-lspconfig' }, -- Required
+  --      {
+  --        -- Optional
+  --        'williamboman/mason.nvim',
+  --        run = function()
+  --          pcall(vim.cmd, 'MasonUpdate')
+  --        end,
+  --      },
+  --      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+  --
+  --      -- Autocompletion
+  --      { 'hrsh7th/nvim-cmp' },     -- Required
+  --      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+  --      { 'L3MON4D3/LuaSnip' },     -- Required
+  --      { 'hrsh7th/cmp-buffer' },
+  --      { 'hrsh7th/cmp-path' },
+  --      { 'saadparwaiz1/cmp_luasnip' },
+  --      { 'hrsh7th/cmp-nvim-lua' },
+  --      { 'rafamadriz/friendly-snippets' },
+  --    }
+  --  })
   use('MunifTanjim/prettier.nvim')
   use("folke/zen-mode.nvim")
   use("github/copilot.vim")
@@ -69,13 +73,9 @@ return require('packer').startup(function(use)
       require("conform").setup()
     end,
   })
-  use({
-    "L3MON4D3/LuaSnip",
-    -- follow latest release.
-    tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-    -- install jsregexp (optional!:).
-    run = "make install_jsregexp"
-  })
+  use('L3MON4D3/LuaSnip')
+  use('saadparwaiz1/cmp_luasnip')
+  use('rafamadriz/friendly-snippets')
   use({
     "folke/which-key.nvim",
     config = function()
@@ -150,10 +150,11 @@ return require('packer').startup(function(use)
       })
     end
   })
-  use({
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  })
+  -- adds tabs, not sure we want it now
+  --  use({
+  --    'nvim-lualine/lualine.nvim',
+  --    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  --  })
   use({
     'Mofiqul/dracula.nvim',
     as = "dracula",
