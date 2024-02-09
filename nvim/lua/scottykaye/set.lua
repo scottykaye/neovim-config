@@ -30,6 +30,9 @@ vim.opt.updatetime = 50
 vim.opt.foldmethod = "indent"
 vim.opt.foldenable = false
 vim.opt.clipboard = "unnamedplus"
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
+
 -- vim.opt.colorcolumn = "80"
 
 
