@@ -18,11 +18,12 @@ require("conform").setup({
     json = { { "prettierd", "prettier" } },
     jsonc = { { "prettierd", "prettier" } },
     bash = { "shfmt" },
-    sh = { "shfmt" },
     yaml = { { "prettierd", "prettier" } },
     graphql = { { "prettierd", "prettier" } },
     handlebars = { { "prettierd", "prettier" } },
-
+    zsh = { 'beautysh' },
+    sh = { 'beautysh' },
+    astro = { "prettier" }
   },
 })
 
@@ -37,6 +38,9 @@ require("conform").setup({
   format_on_save = {
     -- These options will be passed to conform.format()
     timeout_ms = 500,
+    lsp_fallback = true,
+  },
+  format_after_save = {
     lsp_fallback = true,
   },
 })
