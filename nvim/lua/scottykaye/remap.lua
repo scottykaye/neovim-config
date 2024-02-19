@@ -36,7 +36,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+-- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -44,24 +44,28 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>c", [[:nohlsearch<CR>]])
-vim.keymap.set("n", "<S-M-Up>", "Vypk")
-vim.keymap.set("n", "<S-M-Down>", "Vyp")
+vim.keymap.set("n", "<S-M-Up>", "<Esc>Vypk")
+vim.keymap.set("n", "<S-M-Down>", "<Esc>Vyp")
+vim.keymap.set("i", "<S-M-Up>", "<Esc>Vypk")
+vim.keymap.set("i", "<S-M-Down>", "<Esc>Vyp")
+
 vim.keymap.set("n", "<M-Up>", "Vyddkkp")
 vim.keymap.set("n", "<M-Down>", "Vyddp")
+vim.keymap.set("i", "<M-Up>", "<Esc>Vyddkkp")
+vim.keymap.set("i", "<M-Down>", "<Esc>Vyddp")
 
 vim.keymap.set("n", "<leader>w", [[:w<CR>]])
 vim.keymap.set("n", "<leader>h", [[:/<C-r><C-w><CR>]])
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>ok", [[:%s/\(.*\)/bar\1/g<Left><Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/scottykaye/packer.lua<CR>");
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 
-
 vim.keymap.set("n", "<leader><leader>", function()
   vim.cmd("so")
 end)
-
 -- vim.api.nvim_set_keymap(
 --   "n",
 --   "<leader>fb",

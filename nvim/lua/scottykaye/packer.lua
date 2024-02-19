@@ -30,33 +30,6 @@ return require('packer').startup(function(use)
     requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   })
   use('nvim-tree/nvim-web-devicons')
-  use('neovim/nvim-lspconfig')
-  --  use({
-  --    'VonHeikemen/lsp-zero.nvim',
-  --    branch = 'v2.x',
-  --    requires = {
-  --      -- LSP Support
-  --      { 'neovim/nvim-lspconfig' }, -- Required
-  --      {
-  --        -- Optional
-  --        'williamboman/mason.nvim',
-  --        run = function()
-  --          pcall(vim.cmd, 'MasonUpdate')
-  --        end,
-  --      },
-  --      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-  --
-  --      -- Autocompletion
-  --      { 'hrsh7th/nvim-cmp' },     -- Required
-  --      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-  --      { 'L3MON4D3/LuaSnip' },     -- Required
-  --      { 'hrsh7th/cmp-buffer' },
-  --      { 'hrsh7th/cmp-path' },
-  --      { 'saadparwaiz1/cmp_luasnip' },
-  --      { 'hrsh7th/cmp-nvim-lua' },
-  --      { 'rafamadriz/friendly-snippets' },
-  --    }
-  --  })
   use('MunifTanjim/prettier.nvim')
   use("folke/zen-mode.nvim")
   use("github/copilot.vim")
@@ -150,17 +123,15 @@ return require('packer').startup(function(use)
       })
     end
   })
-  -- adds tabs, not sure we want it now
-  --  use({
-  --    'nvim-lualine/lualine.nvim',
-  --    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  --  })
+  use({
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  })
   use({
     'Mofiqul/dracula.nvim',
     as = "dracula",
     config = function()
       require("dracula").setup({
-        -- customize dracula color palette
         colors = {
           bg = "none",
           fg = "#F8F8F2",
@@ -194,24 +165,15 @@ return require('packer').startup(function(use)
           white = "#ABB2BF",
           black = "#191A21",
         },
-        -- show the '~' characters after the end of buffers
-        show_end_of_buffer = true,    -- default false
-        -- use transparent background
-        transparent_bg = true,        -- default false
-        -- set custom lualine background color
+        show_end_of_buffer = true,   -- default false
+        transparent_bg = true,       -- default false
         lualine_bg_color = "#44475a", -- default nil
-        -- set italic comment
-        italic_comment = true,        -- default false
-        -- overrides the default highlights with table see `:h synIDattr`
-        -- You can use overrides as table like this
-        -- overrides = {
-        --   NonText = { fg = "white" }, -- set NonText fg to white
-        --   NvimTreeIndentMarker = { link = "NonText" }, -- link to NonText highlight
-        --   Nothing = {} -- clear highlight of Nothing
-        -- },
-        -- Or you can also use it like a function to get color from theme
+        italic_comment = true,       -- default false
+
         overrides = function(colors)
           return {
+
+            FloatBorder = { fg = colors.orange_yellow, },
             NonText = { fg = colors.white }, -- set NonText fg to white of theme
             DiffAdd = { bg = colors.bright_green },
             DiffDelete = { fg = colors.bright_red },
@@ -241,8 +203,8 @@ return require('packer').startup(function(use)
             PmenuSel = { fg = colors.white, bg = colors.selection, },
             PmenuSbar = { bg = colors.bg, },
             PmenuThumb = { bg = colors.selection, },
-
             illuminatedWord = { bg = colors.comment },
+
             illuminatedCurWord = { bg = colors.comment },
             IlluminatedWordText = { bg = colors.comment },
             IlluminatedWordRead = { bg = colors.comment },
@@ -295,6 +257,10 @@ return require('packer').startup(function(use)
       vim.cmd([[colorscheme dracula]])
     end
   })
+  -- use { "catppuccin/nvim", as = "catppuccin", config = function()
+  -- vim.cmd([[colorscheme catppuccin]])
+  -- end
+  -- }
   --  Haven't been using this. This produces a new vim tree that stays with you
   --use {
   --  'nvim-tree/nvim-tree.lua',
