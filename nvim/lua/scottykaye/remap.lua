@@ -44,8 +44,8 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>c", [[:nohlsearch<CR>]])
-vim.keymap.set("n", "<S-M-Up>", "<Esc>Vypk")
-vim.keymap.set("n", "<S-M-Down>", "<Esc>Vyp")
+vim.keymap.set("n", "<S-M-Up>", "Vypk")
+vim.keymap.set("n", "<S-M-Down>", "Vyp")
 vim.keymap.set("i", "<S-M-Up>", "<Esc>Vypk")
 vim.keymap.set("i", "<S-M-Down>", "<Esc>Vyp")
 
